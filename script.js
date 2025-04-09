@@ -1,0 +1,1 @@
+// JavaScript kodları buraya gelecek
