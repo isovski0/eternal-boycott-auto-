@@ -1,25 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <title>Eternal Boycott</title>
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    h1 { font-size: 2em; }
-    input { padding: 10px; margin: 20px 0; width: 300px; }
-    ul { list-style-type: none; padding: 0; }
-    li { margin: 5px 0; }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <h1>Eternal Boycott</h1>
-  <p>Bilinçli Tüketim İçin Doğru Bilgi</p>
-  <input type="text" id="searchInput" placeholder="Marka ara...">
-  <h2>Boykot Edilen Markalar</h2>
-  <ul id="boykotEdilenler"></ul>
-  <h2>Boykot Edilmeyen Markalar</h2>
-  <ul id="boykotEdilmeyenler"></ul>
-  <script src="script.js"></script>
+  <header>
+    <h1>Eternal Boycott</h1>
+    <p>Sonsuz Tüketici Duruşu ❌🛍️</p>
+    <input type="text" id="searchInput" placeholder="🔍 Marka ara...">
+    <div id="categoryFilters">
+      <button data-category="Gıda">🍔 Gıda</button>
+      <button data-category="Kozmetik">💄 Kozmetik</button>
+      <button data-category="Giyim">👕 Giyim</button>
+    </div>
+  </header>
+  <main>
+    <ul id="brandList"></ul>
+  </main>
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <span id="modalClose">✖️</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalReason"></p>
+      <p id="modalSources"></p>
+      <p id="modalAlternatives"></p>
+    </div>
+  </div>
 </body>
 </html>

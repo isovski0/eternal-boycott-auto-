@@ -1,5 +1,28 @@
-
 {
-  "boykot_edilen": ["Coca-Cola", "Nestlé", "McDonald's"],
-  "boykot_edilmeyen": ["Eyüp Sabri Tuncer", "Dimes", "Arçelik"]
+  "brands": [
+    {
+      "name": "Coca-Cola",
+      "boycott": true,
+      "reason": "İsrail'e destek",
+      "category": "Gıda",
+      "sources": ["boykot.co", "boykot.me"],
+      "alternatives": ["Dimes", "Tamek"]
+    },
+    {
+      "name": "Nestlé",
+      "boycott": true,
+      "reason": "Sömürü politikaları",
+      "category": "Gıda",
+      "sources": ["boykot.co"],
+      "alternatives": ["Saka", "Erikli"]
+    },
+    {
+      "name": "Eyüp Sabri Tuncer",
+      "boycott": false,
+      "reason": "Boykot bulunmuyor",
+      "category": "Kozmetik",
+      "sources": ["boykot.co", "boykot.me"],
+      "alternatives": []
+    }
+  ]
 }
