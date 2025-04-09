@@ -1,1 +1,5 @@
-{ "markalar": [] }
+
+{
+  "boykot_edilen": ["Coca-Cola", "Nestlé", "McDonald's"],
+  "boykot_edilmeyen": ["Eyüp Sabri Tuncer", "Dimes", "Arçelik"]
+}
