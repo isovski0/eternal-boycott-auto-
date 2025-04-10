@@ -5,20 +5,20 @@ const data = [
     category: "Gıda",
     status: "boykot",
     reason: "İsrail destekçisi",
-    alternatives: ["Dimes", "Pepsi"]
+    alternatives: ["Pepsi", "Dimes"]
   },
   {
     name: "Nestlé",
     category: "Gıda",
     status: "boykot",
-    reason: "Sömürü politikaları",
+    reason: "Sömürü politikası",
     alternatives: ["Torku", "Eti"]
   },
   {
     name: "Eyüp Sabri Tuncer",
     category: "Kozmetik",
     status: "destekleniyor",
-    reason: "Boykot dışı listelenmiş",
+    reason: "Boykot dışı",
     alternatives: []
   }
 ];
@@ -30,11 +30,10 @@ let selectedCat = "Hepsi";
 
 function render() {
   list.innerHTML = "";
+  const term = search.value.toLowerCase().replace(/[^a-z0-9]/gi, '');
   data.forEach(brand => {
-    if (
-      (selectedCat === "Hepsi" || brand.category === selectedCat) &&
-      brand.name.toLowerCase().includes(search.value.toLowerCase())
-    ) {
+    const brandKey = brand.name.toLowerCase().replace(/[^a-z0-9]/gi, '');
+    if ((selectedCat === "Hepsi" || brand.category === selectedCat) && brandKey.includes(term)) {
       const li = document.createElement("li");
       li.textContent = `${brand.name} ${brand.status === "boykot" ? "❌" : "✅"}`;
       li.onclick = () => showModal(brand);

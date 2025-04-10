@@ -1,5 +1,5 @@
 
-body { font-family: Helvetica; margin: 0; padding: 1rem; background: #fafafa; }
+body { font-family: Helvetica, sans-serif; margin: 0; padding: 1rem; background: #f9f9f9; }
 h1 { font-size: 2rem; margin-bottom: 0.5rem; }
 input { padding: 0.5rem; width: 100%; max-width: 400px; margin-bottom: 1rem; }
 #filters button { margin-right: 0.5rem; padding: 0.5rem 1rem; }
