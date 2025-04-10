@@ -1,58 +1,73 @@
 
-const brands = [
+const data = [
   {
     name: "Coca-Cola",
-    status: "boykot",
     category: "Gıda",
-    details: "İsrail destekçisi olduğu için boykot ediliyor.",
-    alternatives: ["Pepsi", "Cola Turka"]
+    status: "boykot",
+    reason: "İsrail destekçisi",
+    alternatives: ["Dimes", "Pepsi"]
   },
   {
     name: "Nestlé",
-    status: "boykot",
     category: "Gıda",
-    details: "Filistin'e karşı tutumu nedeniyle boykot listesinde.",
-    alternatives: ["Eti", "Ülker"]
+    status: "boykot",
+    reason: "Sömürü politikaları",
+    alternatives: ["Torku", "Eti"]
   },
   {
     name: "Eyüp Sabri Tuncer",
-    status: "destekleniyor",
     category: "Kozmetik",
-    details: "Hiçbir boykot listesinde yer almıyor.",
+    status: "destekleniyor",
+    reason: "Boykot dışı listelenmiş",
     alternatives: []
   }
 ];
 
-function renderBrands() {
-  const list = document.getElementById("brand-list");
+const list = document.getElementById("brand-list");
+const search = document.getElementById("search");
+const filters = document.querySelectorAll("#filters button");
+let selectedCat = "Hepsi";
+
+function render() {
   list.innerHTML = "";
-  brands.forEach((b, i) => {
-    const li = document.createElement("li");
-    li.innerHTML = `${b.name} ${b.status === "boykot" ? "❌" : "✅"}`;
-    li.onclick = () => openModal(b);
-    list.appendChild(li);
+  data.forEach(brand => {
+    if (
+      (selectedCat === "Hepsi" || brand.category === selectedCat) &&
+      brand.name.toLowerCase().includes(search.value.toLowerCase())
+    ) {
+      const li = document.createElement("li");
+      li.textContent = `${brand.name} ${brand.status === "boykot" ? "❌" : "✅"}`;
+      li.onclick = () => showModal(brand);
+      list.appendChild(li);
+    }
   });
 }
 
-function openModal(brand) {
-  const modal = document.getElementById("modal");
-  const modalContent = document.getElementById("modal-content");
-  if (!brand.details && (!brand.alternatives || brand.alternatives.length === 0)) return;
+filters.forEach(btn => {
+  btn.onclick = () => {
+    selectedCat = btn.dataset.cat;
+    render();
+  };
+});
+search.oninput = render;
 
-  modalContent.innerHTML = `
+function showModal(brand) {
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modalBody");
+  modalBody.innerHTML = `
     <h2>${brand.name}</h2>
-    <p>${brand.details || "Detay bulunamadı."}</p>
+    <p><strong>Durum:</strong> ${brand.status === "boykot" ? "Boykot Ediliyor" : "Boykot Edilmiyor"}</p>
+    <p><strong>Gerekçe:</strong> ${brand.reason}</p>
     ${
-      brand.alternatives && brand.alternatives.length
+      brand.alternatives.length
         ? `<p><strong>Alternatifler:</strong> ${brand.alternatives.join(", ")}</p>`
         : ""
     }
   `;
-  modal.style.display = "flex";
+  modal.classList.remove("hidden");
 }
-
-document.getElementById("close-modal").onclick = () => {
-  document.getElementById("modal").style.display = "none";
+document.getElementById("modalClose").onclick = () => {
+  document.getElementById("modal").classList.add("hidden");
 };
 
-renderBrands();
+render();
