@@ -6,26 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eternal Boycott</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
     <h1>Eternal Boycott</h1>
-    <p>📢 Tüm markalar listelendi. Arama ve filtreleme aktif.</p>
-    <input type="text" id="search" placeholder="🔍 Marka ara..." />
-    <div id="filters">
-      <button data-cat="Hepsi">Hepsi</button>
-      <button data-cat="Gıda">🍔 Gıda</button>
-      <button data-cat="Kozmetik">💄 Kozmetik</button>
-      <button data-cat="Giyim">👕 Giyim</button>
+    <input type="text" placeholder="🔍 Marka ara..." />
+    <div class="filters">
+      <button>🍔 Gıda</button>
+      <button>💄 Kozmetik</button>
+      <button>👕 Giyim</button>
     </div>
   </header>
-  <main><ul id="brand-list"></ul></main>
-  <div id="modal" class="hidden">
-    <div class="modal-content">
-      <span id="modalClose">✖</span>
-      <div id="modalBody"></div>
-    </div>
-  </div>
+  <main>
+    <div class="brand-card">Coca-Cola ❌</div>
+    <div class="brand-card">Nestlé ❌</div>
+    <div class="brand-card">Eyüp Sabri Tuncer ✅</div>
+  </main>
 </body>
 </html>
